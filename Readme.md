@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Андрей Коршунов](https://up.htmlacademy.ru/javascript/23/user/359327).
-* Наставник: `Александр Бабченко`(https://htmlacademy.ru/profile/babtshe).
+* Наставник: [Александр Бабченко](https://htmlacademy.ru/profile/babtshe).
 
 ---
 
