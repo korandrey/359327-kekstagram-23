@@ -2,22 +2,25 @@
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
-  if (min < 0 || max < 0) {
-    console.log('Вы ввели значение меньше нуля. Введите корректное значение.');
+  if (min < 0) {
+    throw RangeError(`Параметр ${min} должен быть больше или равен нулю`);
+  } else if (max < 0) {
+    throw RangeError(`Параметр ${max} должен быть больше или равен нулю`);
   } else if (min === max) {
-    console.log('min и max равны. Так нельзя');
+    throw RangeError(`Параметры ${min} и ${max} равны`);
   } else if (min > max) {
-    console.log('min > max.Некорректно');
+    [min, max] = [max, min];
   }
   return Math.floor(Math.random() * (max - min + 1)) + min; //Максимум и минимум включаются
 }
 
 
-getRandomIntInclusive(0, 10);
+getRandomIntInclusive(10, -10);
 
-function checkMaxLenghtString(text, maxLenght) {
-  const lenghtText = text.length;
-  return !(lenghtText > maxLenght);
+
+function MaxLengthStringCheck(text, maxLength) {
+  return text.length < maxLength;
 }
 
-checkMaxLenghtString('asd', 5);
+MaxLengthStringCheck('asd', 5);
+
