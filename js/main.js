@@ -1,6 +1,5 @@
 // Ссылка от куда взял скрипт https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 function getRandomIntInclusive(min, max) {
-  min = Math.ceil(min);
   max = Math.floor(max);
   if (min < 0) {
     throw RangeError(`Параметр ${min} должен быть больше или равен нулю`);
