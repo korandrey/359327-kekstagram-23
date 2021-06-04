@@ -17,9 +17,9 @@ function getRandomIntInclusive(min, max) {
 getRandomIntInclusive(10, -10);
 
 
-function MaxLengthStringCheck(text, maxLength) {
+function checkStringMaxLength(text, maxLength) {
   return text.length < maxLength;
 }
 
-MaxLengthStringCheck('asd', 5);
+checkStringMaxLength('asd', 5);
 
