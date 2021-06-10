@@ -23,36 +23,40 @@ function checkStringMaxLength(text, maxLength) {
 
 checkStringMaxLength('asd', 5);
 
-const id = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
-const usedId = [''];
-const url = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25'];
-const usedUrl = [''];
-const idComments = [10, 16, 3, 1, 4, 64, 73, 81, 9, 112, 111, 122, 123, 154, 154, 136, 127, 18, 190, 20, 21, 212, 223, 234, 25];
-const avatar = ['1', '2', '3', '4', '5', '6'];
+const ids = [1];
+const urls = ['1'];
+const idComments = [1];
+const avatars = ['1', '2', '3', '4', '5', '6'];
 const messages = ['Всё отлично!', 'В целом всё неплохо. Но не всё.', 'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.', 'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.', 'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.', 'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'];
 const names = ['Август', 'Авдей', 'Аверкий', 'Аверьян', 'Авксентий', 'Автоном', 'Агап', 'Агафон', 'Аггей', 'Адам', 'Адриан', 'Азарий', 'Аким', 'Александр', 'Алексей', 'Амвросий', 'Амос', 'Ананий', 'Анатолий', 'Андрей', 'Андрон', 'Андроник', 'Аникей', 'Аникита', 'Анисим'];
+const descriptionPhoto = 'Хорошая фотография';
+const minLikes = 15;
+const maxLikes = 200;
 
 function getArrayId(elements) {
-  for (let i = 0; i < elements.length; i++) {
-    usedId.push(elements[i]);
-    if (usedId.includes(elements[i])) {
-      return elements[i]++;
-    }
+  for (let i = 0; i < 25; i++) {
+    return elements[i]++;
   }
 }
 
 function getArrayUrl(elements) {
-  for (let i = 0; i < elements.length; i++) {
-    usedUrl.push(elements[i]);
-    if (usedUrl.includes(elements[i])) {
-      return `photos/${elements[i]++}.jpg`;
-    }
+  for (let i = 0; i < 25; i++) {
+    return `photos/${elements[i]++}.jpg`;
   }
 }
 
 function getArrayRandomAvatar(elements) {
   const result = getRandomIntInclusive(1, elements.length + 1);
   return `img/avatar-${result}.svg`;
+}
+
+function getArrayRandomMessage(elements) {
+  const numberMessages = getRandomIntInclusive(1, 2);
+  const randomElementsArray = getRandomIntInclusive(0, elements.length);
+  if (numberMessages === 1) {
+    return elements[randomElementsArray];
+  }
+  return `${elements[randomElementsArray]} \n ${elements[randomElementsArray + 1]}`;
 }
 
 function getArrayRandomElement(elements) {
@@ -63,15 +67,15 @@ function getArrayRandomElement(elements) {
 
 function createPhoto() {
   return {
-    id: getArrayId(id),
-    url: getArrayUrl(url),
-    description: 'Хорошая фотография',
-    likes: getRandomIntInclusive(15, 200),
+    id: getArrayId(ids),
+    url: getArrayUrl(urls),
+    description: descriptionPhoto,
+    likes: getRandomIntInclusive(minLikes, maxLikes),
     comments: [
       {
         id: getArrayId(idComments),
-        avatar: getArrayRandomAvatar(avatar),
-        message: getArrayRandomElement(messages),
+        avatar: getArrayRandomAvatar(avatars),
+        message: getArrayRandomMessage(messages),
         name: getArrayRandomElement(names),
       },
     ],
@@ -79,5 +83,6 @@ function createPhoto() {
   };
 }
 
-const UploadPhoto = new Array(25).fill(null).map(() => createPhoto());
-UploadPhoto;
+new Array(25).fill(null).map(() => createPhoto());
+
+
