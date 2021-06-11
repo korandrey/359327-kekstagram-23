@@ -34,14 +34,14 @@ const minLikes = 15;
 const maxLikes = 200;
 
 function getArrayId(elements) {
-  for (let i = 0; i < 25; i++) {
-    return elements[i]++;
+  for (let index = 0; index < 25; index++) {
+    return elements[index]++;
   }
 }
 
 function getArrayUrl(elements) {
-  for (let i = 0; i < 25; i++) {
-    return `photos/${elements[i]++}.jpg`;
+  for (let index = 0; index < 25; index++) {
+    return `photos/${elements[index]++}.jpg`;
   }
 }
 
@@ -60,8 +60,8 @@ function getArrayRandomMessage(elements) {
 }
 
 function getArrayRandomElement(elements) {
-  const r = getRandomIntInclusive(0, elements.length);
-  return elements[r];
+  const randomResult = getRandomIntInclusive(0, elements.length);
+  return elements[randomResult];
 }
 
 
