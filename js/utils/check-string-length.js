@@ -1,4 +1,9 @@
 function checkStringLength (string, length) {
   return string.length <= length;
 }
-checkStringLength('123',2);
+
+function checkStringMaxLength(text, maxLength) {
+  return text.length < maxLength;
+}
+
+export {checkStringLength, checkStringMaxLength};
