@@ -23,26 +23,26 @@ function checkStringMaxLength(text, maxLength) {
 
 checkStringMaxLength('asd', 5);
 
-const ids = [1];
-const urls = ['1'];
-const idComments = [1];
-const avatars = ['1', '2', '3', '4', '5', '6'];
-const messages = ['Всё отлично!', 'В целом всё неплохо. Но не всё.', 'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.', 'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.', 'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.', 'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'];
-const names = ['Август', 'Авдей', 'Аверкий', 'Аверьян', 'Авксентий', 'Автоном', 'Агап', 'Агафон', 'Аггей', 'Адам', 'Адриан', 'Азарий', 'Аким', 'Александр', 'Алексей', 'Амвросий', 'Амос', 'Ананий', 'Анатолий', 'Андрей', 'Андрон', 'Андроник', 'Аникей', 'Аникита', 'Анисим'];
-const descriptionPhoto = 'Хорошая фотография';
-const minLikes = 15;
-const maxLikes = 200;
+const AVATARS = ['1', '2', '3', '4', '5', '6'];
+const MESSAGES = ['Всё отлично!', 'В целом всё неплохо. Но не всё.', 'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.', 'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.', 'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.', 'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'];
+const NAMES = ['Август', 'Авдей', 'Аверкий', 'Аверьян', 'Авксентий', 'Автоном', 'Агап', 'Агафон', 'Аггей', 'Адам', 'Адриан', 'Азарий', 'Аким', 'Александр', 'Алексей', 'Амвросий', 'Амос', 'Ананий', 'Анатолий', 'Андрей', 'Андрон', 'Андроник', 'Аникей', 'Аникита', 'Анисим'];
+const DESCPTION_PHOTO = 'Хорошая фотография';
+const MIN_LIKES = 15;
+const MAX_LIKES = 200;
+let ids = 1;
+let urls = 1;
+let idsComments = 1;
 
-function getArrayId(elements) {
-  for (let index = 0; index < 25; index++) {
-    return elements[index]++;
-  }
+function getId() {
+  return ids++;
 }
 
-function getArrayUrl(elements) {
-  for (let index = 0; index < 25; index++) {
-    return `photos/${elements[index]++}.jpg`;
-  }
+function getUrl() {
+  return `photos/${urls++}.jpg`;
+}
+
+function getIdComments() {
+  return idsComments++;
 }
 
 function getArrayRandomAvatar(elements) {
@@ -52,31 +52,31 @@ function getArrayRandomAvatar(elements) {
 
 function getArrayRandomMessage(elements) {
   const numberMessages = getRandomIntInclusive(1, 2);
-  const randomElementsArray = getRandomIntInclusive(0, elements.length);
+  const randomArrayElement = getRandomIntInclusive(0, elements.length);
   if (numberMessages === 1) {
-    return elements[randomElementsArray];
+    return elements[randomArrayElement];
   }
-  return `${elements[randomElementsArray]} \n ${elements[randomElementsArray + 1]}`;
+  return `${elements[randomArrayElement]} \n ${elements[randomArrayElement + 1]}`;
 }
 
 function getArrayRandomElement(elements) {
-  const randomResult = getRandomIntInclusive(0, elements.length);
+  const randomResult = getRandomIntInclusive(0, elements.length + 1);
   return elements[randomResult];
 }
 
 
 function createPhoto() {
   return {
-    id: getArrayId(ids),
-    url: getArrayUrl(urls),
-    description: descriptionPhoto,
-    likes: getRandomIntInclusive(minLikes, maxLikes),
+    id: getId(),
+    url: getUrl(),
+    description: DESCPTION_PHOTO,
+    likes: getRandomIntInclusive(MIN_LIKES, MAX_LIKES),
     comments: [
       {
-        id: getArrayId(idComments),
-        avatar: getArrayRandomAvatar(avatars),
-        message: getArrayRandomMessage(messages),
-        name: getArrayRandomElement(names),
+        id: getIdComments(),
+        avatar: getArrayRandomAvatar(AVATARS),
+        message: getArrayRandomMessage(MESSAGES),
+        name: getArrayRandomElement(NAMES),
       },
     ],
 
@@ -84,5 +84,3 @@ function createPhoto() {
 }
 
 new Array(25).fill(null).map(() => createPhoto());
-
-
