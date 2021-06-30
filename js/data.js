@@ -61,4 +61,6 @@ function createPhoto() {
   };
 }
 
-export {createPhoto};
+const generatePhotos = new Array(25).fill(null).map(() => createPhoto());
+
+export {generatePhotos};
