@@ -1,3 +1,2 @@
-import {createPhoto} from './data.js';
-
-new Array(25).fill(null).map(() => createPhoto());
+import './data.js';
+import './rendering-thumbnails.js';
