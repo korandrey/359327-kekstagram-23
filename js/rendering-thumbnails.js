@@ -12,3 +12,4 @@ generatePhotos.forEach((photo) => {
   sectionPictures.appendChild(photoElement);
 });
 
+

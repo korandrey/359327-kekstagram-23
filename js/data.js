@@ -24,13 +24,13 @@ function getIdComments() {
 }
 
 function getArrayRandomAvatar(elements) {
-  const result = getRandomIntInclusive(1, elements.length + 1);
+  const result = getRandomIntInclusive(1, elements.length); // убрал -1, так как выгружаась аватарка с номером 7,которой не сущетсвует
   return `img/avatar-${result}.svg`;
 }
 
 function getArrayRandomMessage(elements) {
   const numberMessages = getRandomIntInclusive(1, 2);
-  const randomArrayElement = getRandomIntInclusive(0, elements.length);
+  const randomArrayElement = getRandomIntInclusive(0, elements.length - 1); // добавил -1,так как в комментариях бывало значение undefined
   if (numberMessages === 1) {
     return elements[randomArrayElement];
   }
@@ -62,5 +62,6 @@ function createPhoto() {
 }
 
 const generatePhotos = new Array(25).fill(null).map(() => createPhoto());
+
 
 export {generatePhotos};
