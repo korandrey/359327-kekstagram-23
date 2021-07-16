@@ -1,24 +1,21 @@
-import { generatePhotos } from './data.js';
-
-const photo = document.querySelector('.picture__img');
-photo.addEventListener('click', () => {
+export function openFullScreenPictures(smallPhoto) {
   const sectionFullSizePictures = document.querySelector('.big-picture');
   sectionFullSizePictures.classList.remove('hidden');
   const showBigPhoto = sectionFullSizePictures.querySelector('.big-picture__img');
-  showBigPhoto.querySelector('img').setAttribute('src', generatePhotos[0].url);
-  sectionFullSizePictures.querySelector('.likes-count').textContent = generatePhotos[0].likes;
-  sectionFullSizePictures.querySelector('.comments-count').textContent = generatePhotos[0].comments[0].id;
+  showBigPhoto.querySelector('img').setAttribute('src', smallPhoto.url);
+  sectionFullSizePictures.querySelector('.likes-count').textContent = smallPhoto.likes;
+  sectionFullSizePictures.querySelector('.comments-count').textContent = smallPhoto.comments[0].id;
   const socialComments = sectionFullSizePictures.querySelector('.social__comments');
   socialComments.innerHTML =
-        `<li class="social__comment">
-<img
-    class="social__picture"
-    src="${generatePhotos[0].comments[0].avatar}"
-    alt="${generatePhotos[0].comments[0].name}"
-    width="35" height="35">
-<p class="social__text">${generatePhotos[0].comments[0].message}</p>
-</li>`;
-  sectionFullSizePictures.querySelector('.social__caption').textContent = generatePhotos[0].description;
+    `<li class="social__comment">
+  <img
+      class="social__picture"
+      src="${smallPhoto.comments[0].avatar}"
+      alt="${smallPhoto.comments[0].name}"
+      width="35" height="35">
+  <p class="social__text">${smallPhoto.comments[0].message}</p>
+  </li>`;
+  sectionFullSizePictures.querySelector('.social__caption').textContent = smallPhoto.description;
   sectionFullSizePictures.querySelector('.social__comment-count').classList.add('hidden');
   sectionFullSizePictures.querySelector('.comments-loader').classList.add('hidden');
   document.querySelector('body').classList.add('modal-open');
@@ -34,5 +31,4 @@ photo.addEventListener('click', () => {
       document.querySelector('body').classList.remove('modal-open');
     }
   });
-});
-
+}

@@ -1,4 +1,4 @@
-import {getRandomIntInclusive} from './utils/get-random-int-inclusive.js';
+import { getRandomIntInclusive } from './utils/get-random-int-inclusive.js';
 
 
 const AVATARS = ['1', '2', '3', '4', '5', '6'];
@@ -64,4 +64,4 @@ function createPhoto() {
 const generatePhotos = new Array(25).fill(null).map(() => createPhoto());
 
 
-export {generatePhotos};
+export { generatePhotos };
