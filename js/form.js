@@ -105,7 +105,9 @@ imgUploadInput.addEventListener('change', () => {
     const valueLength = hashtags.value.length;
     const numberOfHashtags = hashtags.value.split(' ');
 
-    if (numberOfHashtags.length > NUM_HASHTAGS) {
+    if (hashtags.value === '') {
+      hashtags.setCustomValidity('');
+    } else if (numberOfHashtags.length > NUM_HASHTAGS) {
       hashtags.setCustomValidity(`Количество хэштегов больше чем ${NUM_HASHTAGS}`);
     } else if (valueLength < MIN_HASHTAG_LENGTH) {
       hashtags.setCustomValidity(`Еще нужно добавить ${MIN_HASHTAG_LENGTH - valueLength} символов. Первый символ доджен быть #, не забудьте:)`);
@@ -116,7 +118,6 @@ imgUploadInput.addEventListener('change', () => {
     } else {
       hashtags.setCustomValidity('');
     }
-
 
     function checkInputs() {
       for (let i = 0; i < numberOfHashtags.length; i++) {
