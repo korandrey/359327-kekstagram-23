@@ -4,6 +4,7 @@ import { openFullScreenPictures } from './full-sizePicture.js';
 const sectionPictures = document.querySelector('.pictures');
 const templatePicture = document.querySelector('#picture').content.querySelector('a');
 
+
 generatePhotos.forEach((photo) => {
   const photoElement = templatePicture.cloneNode(true);
   photoElement.querySelector('img').setAttribute('src', photo.url);
